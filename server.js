@@ -1,9 +1,12 @@
 const express = require("express");
-const db = require("./db");
+const authRoutes = require("./auth"); // Import Authentication Routes
+const http = require("./chat"); // Import Chat Server
+
 const app = express();
+app.use(express.json());
 
-app.use(express.json()); // JSON data handle karne ke liye
-
+// Use Auth Routes
+app.use(authRoutes);
 let users = [
   { id: 1, name: "Ali" },
   { id: 2, name: "Aisha" }

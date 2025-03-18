@@ -1,0 +1,16 @@
+version: "3"
+services:
+  nodeapp:
+    build: .  # Current directory ka Dockerfile use karega
+    ports:
+      - "4000:3000"  # Localhost 4000 pe app chalega, container ke andar 3000 pe
+    depends_on:
+      - mysql  # Pehle MySQL chalega, phir Node.js app
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root  # MySQL root password
+      MYSQL_DATABASE: mydatabase # Database ka naam
+    ports:
+      - "3306:3306"  # MySQL ka port expose karega
